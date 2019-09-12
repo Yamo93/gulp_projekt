@@ -1,0 +1,22 @@
+{
+  "name": "gulp_projekt",
+  "version": "1.0.0",
+  "description": "A school project with Gulp.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yamo93/gulp_projekt.git"
+  },
+  "author": "Yamo Gebrewold",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yamo93/gulp_projekt/issues"
+  },
+  "homepage": "https://github.com/Yamo93/gulp_projekt#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2"
+  }
+}
