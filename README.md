@@ -1,4 +1,5 @@
 # Automatisering med Gulp.js
+Detta är ett litet projekt som består av en enkel webbsida som jag tidigare skapat med HTML, CSS och JS. I detta repo lägger jag till en automatiseringsprocess med hjälp av Gulp.js för att automatisera olika uppgifter.
 
 ## Automatiseringsprocessens syfte
 Genom att automatisera uppgifter som vanligtvis tar tid att göra manuellt så blir utvecklingsprocessen snabbare och bekvämare. Man slipper manuellt ta hand om sådant som vanligtvis skulle ta tid, och istället kan man fokusera på själva utvecklingen i sig. Ur en annan aspekt så kan man tycka att det är säkrare att automatisera vissa uppgifter, då man undviker risken att glömma uppgifterna.
