@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/Yamo93/gulp_projekt#readme",
   "devDependencies": {
-    "gulp": "^4.0.2"
+    "gulp": "^4.0.2",
+    "gulp-clean-fix": "^0.3.4",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.7.0",
+    "gulp-csso": "^3.0.1",
+    "gulp-terser": "^1.2.0"
   }
-}
