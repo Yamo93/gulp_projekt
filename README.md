@@ -12,6 +12,7 @@ Jag har använt följande verktyg:
 * Paketet `gulp-csso` för att minifiera CSS-filer.
 * Paketet `gulp-terser` för att minifiera JS-filer.
 * Paketet `gulp-clean-fix` för att rensa pub-katalogen vid kommandot "gulp".
+* Paketet `gulp-sass` för att kompilera SCSS-filer till CSS.
 
 ## Beskrivning av systemet
 Jag har skapat en del tasks i `gulpfile.js`-filen som i sin tur körs via Gulp. 
