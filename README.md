@@ -7,12 +7,12 @@ Genom att automatisera uppgifter som vanligtvis tar tid att göra manuellt så b
 ## Paket och verktyg som jag har använt
 Jag har använt följande verktyg:
 * Paketet `gulp`, vilket är ganska självklart då det är själva task-runnern som används i uppgiften.
-* Paketet `gulp-concat` för att konkatenera CSS- och JS-filer.
-* Paketet `gulp-connect` för att skapa en server med automatisk uppdatering av webbläsaren när filer ändras.
-* Paketet `gulp-csso` för att minifiera CSS-filer.
-* Paketet `gulp-terser` för att minifiera JS-filer.
-* Paketet `gulp-clean-fix` för att rensa pub-katalogen vid kommandot "gulp".
-* Paketet `gulp-sass` för att kompilera SCSS-filer till CSS.
+* Gulp-tillägget `gulp-concat` för att konkatenera CSS- och JS-filer.
+* Gulp-tillägget `gulp-connect` för att skapa en server med automatisk uppdatering av webbläsaren när filer ändras.
+* Gulp-tillägget `gulp-csso` för att minifiera CSS-filer.
+* Gulp-tillägget `gulp-terser` för att minifiera JS-filer.
+* Gulp-tillägget `gulp-clean-fix` för att rensa pub-katalogen vid kommandot "gulp".
+* Gulp-tillägget `gulp-sass` för att kompilera SCSS-filer till CSS.
 
 ## Beskrivning av systemet
 Jag har skapat en del tasks i `gulpfile.js`-filen som i sin tur körs via Gulp. 
