@@ -12,7 +12,8 @@ const concat = require('gulp-concat'),
     csso = require('gulp-csso'),
     connect = require('gulp-connect'),
     clean = require('gulp-clean-fix'),
-    terser = require('gulp-terser');
+    terser = require('gulp-terser'),
+    sass = require('gulp-sass');
 
 // Sökvägar
 const paths = {
@@ -21,6 +22,7 @@ const paths = {
     imageFolder: 'src/img/*.*',
     cssFiles: 'src/**/*.css',
     jsFiles: 'src/**/*.js',
+    scssFiles: 'src/**/*.scss',
     mainCSS: 'src/css/style.css'
 }
 
@@ -30,8 +32,8 @@ function watchTask() {
         root: 'pub',
         livereload: true
     });
-    watch([paths.allFiles, paths.htmlFiles, paths.imageFolder, paths.cssFiles, paths.jsFiles],
-        parallel(copyHTML, copyImages, cssTask, jsTask));
+    watch([paths.allFiles, paths.htmlFiles, paths.imageFolder, paths.cssFiles, paths.jsFiles, paths.scssFiles],
+        parallel(copyHTML, copyImages, compileToSCSS, jsTask));
 }
 
 // Kopierar HTML-filer till pub och laddar om webbläsaren
@@ -50,7 +52,7 @@ function copyImages() {
 
 // Konkatenerar och minifierar CSS-filer och laddar om webbläsaren
 function cssTask() {
-    return src(paths.cssFiles)
+    return src(paths.scssFiles)
         .pipe(concat('style.css'))
         .pipe(csso())
         .pipe(dest('pub/css'))
@@ -72,12 +74,22 @@ function jsTask() {
         .pipe(connect.reload());
 }
 
+// Konkatenerar SCSS-filerna, kompilerar SCSS till CSS, minifierar CSS-produkten och distribuerar filen i den publika CSS-katalogen
+function compileToSCSS() {
+    return src(paths.scssFiles)
+        .pipe(concat('style.scss'))
+        .pipe(sass().on('error', sass.logError))
+        .pipe(csso())
+        .pipe(dest('pub/css'))
+        .pipe(connect.reload());
+}
+
 // Rad av uppgifter som körs vid "gulp"-kommandot
 exports.default = series(
     cleanPub,
     copyHTML,
     copyImages,
-    cssTask,
+    compileToSCSS,
     jsTask,
     watchTask
 );
