@@ -22,18 +22,18 @@ const paths = {
     imageFolder: 'src/img/*.*',
     cssFiles: 'src/**/*.css',
     jsFiles: 'src/**/*.js',
-    scssFiles: 'src/**/*.scss',
+    scssFile: 'src/scss/main.scss',
     mainCSS: 'src/css/style.css'
 }
 
 // Spinnar upp en server och skapar en lyssnare för olika typer av filer och uppgifter
 function watchTask() {
+    watch([paths.allFiles, paths.htmlFiles, paths.imageFolder, paths.cssFiles, paths.jsFiles, paths.scssFile],
+        parallel(copyHTML, copyImages, compileToSCSS, jsTask));
     connect.server({
         root: 'pub',
         livereload: true
     });
-    watch([paths.allFiles, paths.htmlFiles, paths.imageFolder, paths.cssFiles, paths.jsFiles, paths.scssFiles],
-        parallel(copyHTML, copyImages, compileToSCSS, jsTask));
 }
 
 // Kopierar HTML-filer till pub och laddar om webbläsaren
@@ -52,7 +52,7 @@ function copyImages() {
 
 // Konkatenerar och minifierar CSS-filer och laddar om webbläsaren
 function cssTask() {
-    return src(paths.scssFiles)
+    return src(paths.scssFile)
         .pipe(concat('style.css'))
         .pipe(csso())
         .pipe(dest('pub/css'))
@@ -76,8 +76,8 @@ function jsTask() {
 
 // Konkatenerar SCSS-filerna, kompilerar SCSS till CSS, minifierar CSS-produkten och distribuerar filen i den publika CSS-katalogen
 function compileToSCSS() {
-    return src(paths.scssFiles)
-        .pipe(concat('style.scss'))
+    return src(paths.scssFile)
+        // .pipe(concat('style.scss'))
         .pipe(sass().on('error', sass.logError))
         .pipe(csso())
         .pipe(dest('pub/css'))

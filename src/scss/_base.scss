@@ -1,0 +1,96 @@
+/*! Variabler */
+$dark-primary: #2c3e50;
+$light-primary: #d35400;
+$secondary: #2ecc71;
+$white: #EEE;
+
+/*! Enkel reset */
+*::before, *::after, * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+  
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: $white;
+    color: $dark-primary;
+    position: relative;
+
+    h1, h2, h3, h4, h5 {
+        color: $light-primary;
+    }
+
+    h1 {
+        font-size: 2.6rem;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+    }
+
+    h3 {
+        font-size: 2rem;
+    }
+
+    h4 {
+        font-size: 1.8rem;
+    }
+
+    p {
+        font-size: 1.6rem;
+    }
+
+    a {
+        @extend p;
+    }
+
+    li {
+        @extend p;
+    }
+
+    a:link,
+    a:visited {
+        text-decoration: none;
+        color: inherit;
+    }
+}
+
+/*! Mixins */
+@mixin flex-center-vertical {
+    display: flex;
+    align-items: center;
+}
+
+@mixin background-image($url) {
+    background-image: url($url);
+    background-position: center;
+    background-size: cover;
+}
+
+@mixin section-init {
+    width: 60%;
+    margin: 5rem auto;
+
+    &__title {
+        margin: 1rem 0;
+    }
+
+    @media screen and (max-width: 800px) {
+        width: 80%;
+    }
+}
+
+@mixin theme-colors($light-theme: true) {
+    @if $light-theme {
+      background-color: $white;
+      color: $dark-primary;
+    } @else {
+      background-color: $dark-primary;
+      color: $white;
+    }
+  }
