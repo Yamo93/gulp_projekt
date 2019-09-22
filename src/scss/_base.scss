@@ -13,6 +13,10 @@ $white: #EEE;
 
 html {
     font-size: 62.5%;
+
+    @media screen and (max-width: 700px) {
+        font-size: 56.25%;
+    }
 }
   
 body {
