@@ -13,7 +13,8 @@ const concat = require('gulp-concat'),
     connect = require('gulp-connect'),
     clean = require('gulp-clean-fix'),
     terser = require('gulp-terser'),
-    sass = require('gulp-sass');
+    sass = require('gulp-sass'),
+    babel = require('gulp-babel');
 
 // Sökvägar
 const paths = {
@@ -50,15 +51,6 @@ function copyImages() {
         .pipe(connect.reload());
 }
 
-// Konkatenerar och minifierar CSS-filer och laddar om webbläsaren
-function cssTask() {
-    return src(paths.scssFile)
-        .pipe(concat('style.css'))
-        .pipe(csso())
-        .pipe(dest('pub/css'))
-        .pipe(connect.reload());
-}
-
 // Rensar pub-katalogen initialt
 function cleanPub() {
     return src('pub')
@@ -69,6 +61,9 @@ function cleanPub() {
 function jsTask() {
     return src(paths.jsFiles)
         .pipe(concat('main.js'))
+        .pipe(babel({
+            presets: ['@babel/env']
+        }))
         .pipe(terser())
         .pipe(dest('pub/js'))
         .pipe(connect.reload());
